@@ -74,11 +74,29 @@
             background: rgba(255, 255, 255, 0.4); /* White overlay with transparency */
             z-index: 1;
         }
-
         .content-on-top {
             position: relative;
             z-index: 2; /* Ensures content is above the pseudo-element */
         }
+        #quiz-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust minmax values as needed */
+            gap: 20px; /* Space between grid items */
+        }
+        .quiz-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 questions per row */
+            gap: 20px; /* Space between questions */
+        }
+
+        #quiz-content > div {
+        /* Styles for individual quiz question containers */
+            background: #fff; /* Optional: background color */
+            padding: 15px; /* Optional: padding */
+            border-radius: 10px; /* Optional: border radius */
+            box-shadow: 0 2px 4px rgb(0, 0, 0); /* Optional: box shadow */
+        }
+
 
     </style>
 </head>
@@ -90,9 +108,10 @@
         <nav>
             <ul class="flex justify-center space-x-4 mt-2">
                 <li><a href="#home" class="nav-link text-lg">Home</a></li>
-                <li><a href="#learn" class="nav-link text-lg">Learn</a></li>
+                <li><a href="#learn" class="nav-link text-lg">Lernen</a></li>
                 <li><a href="#quiz" class="nav-link text-lg">Quiz</a></li>
-                <li><a href="#process" class="nav-link text-lg">Our Process</a></li>
+                <li><a href="#process" class="nav-link text-lg">Protokoll</a></li>
+                <li><a href="#team" class="nav-link text-lg">Team</a></li>
             </ul>
         </nav>
     </header>
@@ -100,13 +119,13 @@
     <main class="main-content p-4">
         <!-- Home Section -->
         <section id="home" class="my-4 section-content">
-            <h2 class="section-heading">Welcome to the World of Sturm und Drang</h2>
+            <h2 class="section-heading">Willkommen zu Weiße Taube</h2>
             <p class="text-lg">Introduction and general information about Sturm und Drang...</p>
         </section>
 
         <!-- Learn Section -->
         <section id="learn" class="my-4 section-content">
-            <h2 class="section-heading">Learn About Sturm und Drang</h2>
+            <h2 class="section-heading">Lernen mit unserem Video</h2>
             <div class="video-responsive">
                 <!-- Replace 'YourVideoID' with the actual ID of your YouTube video -->
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/YourVideoID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -118,12 +137,13 @@
         <section id="quiz" class="my-4 section-content background-image" style="background-image: url(https://static.vecteezy.com/system/resources/thumbnails/008/214/810/small/quiz-set-in-doodle-style-illustration-icon-question-symbol-for-print-and-design-quiz-and-exam-concept-isolated-element-on-a-white-background-collection-of-sign-for-school-and-event-vector.jpg);">
             <div class="overlay"></div>
             <div class="content-on-top">
-            <h2 class="section-heading">Test Your Knowledge</h2>
-            <div id="quiz-content">
-                <!-- Quiz questions will be loaded here -->
+                <h2 class="section-heading">Quiz</h2>
+                <div id="quiz-content" class="flex flex-wrap justify-center">
+                    <!-- Quiz questions will be loaded here by JavaScript -->
+                </div>
+                <button id="submit-quiz" class="bg-blue-500 text-white p-2 rounded mt-4 hover:bg-blue-600">Submit Quiz</button>
+                <div id="quiz-result" class="mt-4"></div>
             </div>
-            <button id="submit-quiz" class="bg-blue-500 text-white p-2 rounded mt-4 hover:bg-blue-600">Submit Quiz</button>
-            <div id="quiz-result" class="mt-4"></div>
         </section>
 
          <!-- Our Process Section -->
@@ -139,6 +159,34 @@
                 <!-- Add more text and media as needed -->
             </div>
          </section>
+
+         <!-- Team -->
+         <section id="team" class="my-4 section-content">
+            <h2 class="section-heading">Unser Team</h2>
+            <div class="flex flex-wrap justify-center">
+                <!-- Team Member 1 -->
+                <div class="p-4">
+                    <img src="URL_TO_TEAM_MEMBER_1_IMAGE" alt="Team Member 1" class="rounded-full h-32 w-32 object-cover">
+                    <h3 class="text-lg mt-2">Carlos Caxias</h3>
+                    <p>- Erstellung der Website</p>
+                    <p>- Video Editing</p>
+                </div>
+                <!-- Team Member 2 -->
+                <div class="p-4">
+                    <img src="URL_TO_TEAM_MEMBER_2_IMAGE" alt="Team Member 2" class="rounded-full h-32 w-32 object-cover">
+                    <h3 class="text-lg mt-2">Miguel Gomes 👑</h3>
+                    <p>- Leiter</p>
+                    <p>- Präsentator</p>
+                </div>
+                <!-- Team Member 3 -->
+                <div class="p-4">
+                    <img src="URL_TO_TEAM_MEMBER_3_IMAGE" alt="Team Member 3" class="rounded-full h-32 w-32 object-cover">
+                    <h3 class="text-lg mt-2">Francesco Sousa</h3>
+                    <p>- Script zuständig</p>
+                    <p>- Video Beurteilung</p>
+                </div>
+            </div>
+        </section>        
     </main>
 
     <!-- Footer -->
@@ -155,7 +203,26 @@
                     answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
                     correctAnswer: 1
                 },
-                // More questions can be added here
+                {
+                    question: "Question 2",
+                    answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                    correctAnswer: 2
+                },
+                {
+                    question: "Question 3",
+                    answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                    correctAnswer: 0
+                },
+                {
+                    question: "Question 4",
+                    answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                    correctAnswer: 0
+                },
+                {
+                    question: "Question 5",
+                    answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                    correctAnswer: 3
+                },
             ];
 
             const quizContent = document.getElementById('quiz-content');
@@ -163,6 +230,9 @@
 
             function loadQuiz() {
                 quizQuestions.forEach((q, index) => {
+                    const questionContainer = document.createElement('div');
+                    questionContainer.classList.add('p-4'); // Padding for each question
+
                     const questionElement = document.createElement('div');
                     questionElement.innerHTML = `<h3>${q.question}</h3>`;
                     q.answers.forEach((answer, answerIndex) => {
@@ -172,9 +242,11 @@
                                 ${answer}
                             </label><br>`;
                     });
-                    quizContent.appendChild(questionElement);
+                    questionContainer.appendChild(questionElement);
+                    quizContent.appendChild(questionContainer);
                 });
             }
+
 
             function calculateScore() {
                 let score = 0;
