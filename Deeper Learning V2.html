@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weiße Taube Deeper Learning</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.4/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .video-responsive {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-top: 25px;
+            height: 0;
+        }
+        .video-responsive iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        /* Additional custom styles */
+        .section-heading {
+            color: #2c5282; /* Dark blue color */
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .main-content {
+            background-color: #edf2f7; /* Lighter gray background */
+        }
+        .section-content {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        footer {
+            background-color: #2a4365; /* Darker blue color */
+        }
+        .nav-link {
+            transition: color 0.3s, transform 0.3s; /* Smooth color and transform transition */
+        }
+        .nav-link:hover {
+            color: #63b3ed; /* Light blue color on hover */
+            transform: scale(1.1); /* Slightly increase size on hover */
+        }
+        .header-title {
+            font-size: 3rem; /* Larger title size */
+        }
+        .background-image {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+        .background-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: inherit; /* Use the same background as the parent */
+            opacity: 0.5; /* Semi-transparent overlay */
+            z-index: -1;
+        }
+        /* The .overlay class is not needed unless you want a white overlay on top of your background */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.4); /* White overlay with transparency */
+            z-index: 1;
+        }
+
+        .content-on-top {
+            position: relative;
+            z-index: 2; /* Ensures content is above the pseudo-element */
+        }
+
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Header -->
+    <header class="bg-gray-800 text-white p-4 shadow-md" style="background-image: url(https://i.imgur.com/GHVYcEC.png); background-size: cover; background-position: center;">
+        <h1 class="text-center header-title">Weiße Taube Deeper Learning</h1>
+        <img src="https://i.imgur.com/toHxKm0.png" alt="Logo" style="position: absolute; top: 10px; right: 10px; height: 120px;">
+        <nav>
+            <ul class="flex justify-center space-x-4 mt-2">
+                <li><a href="#home" class="nav-link text-lg">Home</a></li>
+                <li><a href="#learn" class="nav-link text-lg">Learn</a></li>
+                <li><a href="#quiz" class="nav-link text-lg">Quiz</a></li>
+                <li><a href="#process" class="nav-link text-lg">Our Process</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Main Content -->
+    <main class="main-content p-4">
+        <!-- Home Section -->
+        <section id="home" class="my-4 section-content">
+            <h2 class="section-heading">Welcome to the World of Sturm und Drang</h2>
+            <p class="text-lg">Introduction and general information about Sturm und Drang...</p>
+        </section>
+
+        <!-- Learn Section -->
+        <section id="learn" class="my-4 section-content">
+            <h2 class="section-heading">Learn About Sturm und Drang</h2>
+            <div class="video-responsive">
+                <!-- Replace 'YourVideoID' with the actual ID of your YouTube video -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/YourVideoID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <!-- Additional content for learning sections can go here -->
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz" class="my-4 section-content background-image" style="background-image: url(https://static.vecteezy.com/system/resources/thumbnails/008/214/810/small/quiz-set-in-doodle-style-illustration-icon-question-symbol-for-print-and-design-quiz-and-exam-concept-isolated-element-on-a-white-background-collection-of-sign-for-school-and-event-vector.jpg);">
+            <div class="overlay"></div>
+            <div class="content-on-top">
+            <h2 class="section-heading">Test Your Knowledge</h2>
+            <div id="quiz-content">
+                <!-- Quiz questions will be loaded here -->
+            </div>
+            <button id="submit-quiz" class="bg-blue-500 text-white p-2 rounded mt-4 hover:bg-blue-600">Submit Quiz</button>
+            <div id="quiz-result" class="mt-4"></div>
+        </section>
+
+         <!-- Our Process Section -->
+         <section id="process" class="my-4 section-content background-image" style="background-image: url(https://e1.pxfuel.com/desktop-wallpaper/655/684/desktop-wallpaper-dark-green-plain-green.jpg);">
+            <div class="overlay"></div>
+            <div class="content-on-top">
+                <h2 class="section-heading">Protokollierung</h2>
+                <p class="text-lg">Here's an insight into how we created this project...</p>
+                <!-- Insert images and file links here -->
+                <!-- Example: -->
+                <!-- <img src="your_image_path.jpg" alt="Project Image"> -->
+                <!-- <a href="your_file_link" target="_blank">View our file</a> -->
+                <!-- Add more text and media as needed -->
+            </div>
+         </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-white p-4 text-center">
+        <p class="text-lg">&copy; 2024 Deeper Learning 11c</p>
+    </footer>
+
+    <!-- JavaScript for Quiz -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const quizQuestions = [
+                {
+                    question: "Question 1",
+                    answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                    correctAnswer: 1
+                },
+                // More questions can be added here
+            ];
+
+            const quizContent = document.getElementById('quiz-content');
+            const resultDisplay = document.getElementById('quiz-result');
+
+            function loadQuiz() {
+                quizQuestions.forEach((q, index) => {
+                    const questionElement = document.createElement('div');
+                    questionElement.innerHTML = `<h3>${q.question}</h3>`;
+                    q.answers.forEach((answer, answerIndex) => {
+                        questionElement.innerHTML += `
+                            <label>
+                                <input type="radio" name="question${index}" value="${answerIndex}">
+                                ${answer}
+                            </label><br>`;
+                    });
+                    quizContent.appendChild(questionElement);
+                });
+            }
+
+            function calculateScore() {
+                let score = 0;
+                quizQuestions.forEach((q, index) => {
+                    const selectedAnswer = document.querySelector(`input[name="question${index}"]:checked`);
+                    if (selectedAnswer && parseInt(selectedAnswer.value) === q.correctAnswer) {
+                        score++;
+                    }
+                });
+                resultDisplay.innerHTML = `Your score: ${score}/${quizQuestions.length}`;
+            }
+
+            document.getElementById('submit-quiz').addEventListener('click', calculateScore);
+
+            loadQuiz();
+        });
+    </script>
+</body>
+</html>
