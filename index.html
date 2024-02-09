@@ -96,7 +96,14 @@
             border-radius: 10px; /* Optional: border radius */
             box-shadow: 0 2px 4px rgb(0, 0, 0); /* Optional: box shadow */
         }
-
+        #corner-gif {
+            position: fixed;
+            right: 10px; /* Adjust as needed */
+            bottom: 10px; /* Adjust as needed */
+            width: 100px; /* Adjust the size as needed */
+            height: auto;
+            z-index: 1000; /* Ensure it's above other content */
+        }
 
     </style>
 </head>
@@ -120,7 +127,8 @@
         <!-- Home Section -->
         <section id="home" class="my-4 section-content">
             <h2 class="section-heading">Willkommen zu Weiße Taube</h2>
-            <p class="text-lg">Introduction and general information about Sturm und Drang...</p>
+            <p class="text-lg">Unsere Gruppe beschloss, für das Deeper Learning Project eine Website zu erstellen, die unser Video zeigt, aber auch eine interaktive Option bietet, damit Menschen erkennen und verstehen können, wie sie lernen möchten. Den allgemeiner Ziel war es, die verschiedenen Möglichkeiten zu zeigen, wie ein Schüler ein Video oder Material aufnehmen kann, indem er etwas Kreatives erstellt. 
+            <p class="text-lg">Das Video erzählt eine kurze Fantasiegeschichte, in der König "Sturm" und das Volk "Drang" versuchen, herauszufinden, was Gefühle sind und was sie bedeuten.  </p>
         </section>
 
         <!-- Learn Section -->
@@ -128,7 +136,7 @@
             <h2 class="section-heading">Lernen mit unserem Video</h2>
             <div class="video-responsive">
                 <!-- Replace 'YourVideoID' with the actual ID of your YouTube video -->
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/YourVideoID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/pFoGaDjO-E0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <!-- Additional content for learning sections can go here -->
         </section>
@@ -151,12 +159,8 @@
             <div class="overlay"></div>
             <div class="content-on-top">
                 <h2 class="section-heading">Protokollierung</h2>
-                <p class="text-lg">Here's an insight into how we created this project...</p>
-                <!-- Insert images and file links here -->
-                <!-- Example: -->
-                <!-- <img src="your_image_path.jpg" alt="Project Image"> -->
-                <!-- <a href="your_file_link" target="_blank">View our file</a> -->
-                <!-- Add more text and media as needed -->
+                <p class="text-lg">Hier ist ein paar Bilder von unserem Projekt</p>
+                <img src="https://i.imgur.com/P1pPiqc.jpeg" alt="Description of Image" class="max-w-full h-auto rounded">
             </div>
          </section>
 
@@ -166,14 +170,14 @@
             <div class="flex flex-wrap justify-center">
                 <!-- Team Member 1 -->
                 <div class="p-4">
-                    <img src="URL_TO_TEAM_MEMBER_1_IMAGE" alt="Team Member 1" class="rounded-full h-32 w-32 object-cover">
+                    <img src="https://i.imgur.com/B7o2MNK.jpg" alt="Team Member 1" class="rounded-full h-32 w-32 object-cover">
                     <h3 class="text-lg mt-2">Carlos Caxias</h3>
                     <p>- Erstellung der Website</p>
                     <p>- Video Editing</p>
                 </div>
                 <!-- Team Member 2 -->
                 <div class="p-4">
-                    <img src="URL_TO_TEAM_MEMBER_2_IMAGE" alt="Team Member 2" class="rounded-full h-32 w-32 object-cover">
+                    <img src="https://i.imgur.com/jMeiCJJ.jpeg" alt="Team Member 2" class="rounded-full h-32 w-32 object-cover">
                     <h3 class="text-lg mt-2">Miguel Gomes 👑</h3>
                     <p>- Leiter</p>
                     <p>- Präsentator</p>
@@ -199,28 +203,28 @@
         document.addEventListener('DOMContentLoaded', function () {
             const quizQuestions = [
                 {
-                    question: "Question 1",
-                    answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                    question: "Wie lautet der Name des Königreichs?",
+                    answers: ["Vernunft", "Emotionen", "Sieria", "Wellen"],
                     correctAnswer: 1
                 },
                 {
-                    question: "Question 2",
-                    answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                    question: "Wie heißt der Konig des Königreichs?",
+                    answers: ["Zywoo", "Olaf", "Sturm", "Drang"],
                     correctAnswer: 2
                 },
                 {
-                    question: "Question 3",
-                    answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                    question: "Wie wird König Sturm dargestellt?",
+                    answers: ["Als leidenschaftlicher Anführer", "Als strenger Herrscher", "Als weiser König", "Als zurückhaltender Führer"],
                     correctAnswer: 0
                 },
                 {
-                    question: "Question 4",
-                    answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                    question: "Was symbolisiert die Kunst des Drangvolks laut der Aussage einer Bürgerin?",
+                    answers: ["Gefühle und Emotionen", "Tradition und Geschichte", "Wissenschaft und Technologie", "Natur und Umwelt"],
                     correctAnswer: 0
                 },
                 {
-                    question: "Question 5",
-                    answers: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+                    question: "Zu welcher Erkenntnis gelangen König Sturm und die Vernunft am Ende",
+                    answers: ["Dass Vernunft wichtiger ist als Emotion", "Dass Emotionen vermieden werden sollten", "Dass Vernunft allein ausreicht", "Dass Emotion und Vernunft sich ergänzen"],
                     correctAnswer: 3
                 },
             ];
