@@ -6,11 +6,70 @@
     <title>Kritischer Rationalismus nach Raimund Popper</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.4/dist/tailwind.min.css" rel="stylesheet">
     <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            overflow-x: hidden;
+        }
+        header {
+            background: linear-gradient(to right, #1d4350, #a43931);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header-title {
+            font-size: 3.5rem;
+            margin: 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ffdd57;
+        }
+        .section-heading {
+            font-size: 2.5rem;
+            color: #1d4350;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .section-content {
+            background-color: #fff;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            margin-top: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid #1d4350; /* Added outline */
+        }
         .video-responsive {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            padding-top: 25px;
+            padding-bottom: 56.25%;
             height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 15px;
+            border: 2px solid #1d4350; /* Added outline */
         }
         .video-responsive iframe {
             position: absolute;
@@ -19,39 +78,19 @@
             width: 100%;
             height: 100%;
         }
-        /* Additional custom styles */
-        .section-heading {
-            color: #2c5282; /* Dark blue color */
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
         .main-content {
-            background-color: #edf2f7; /* Lighter gray background */
-        }
-        .section-content {
-            background-color: #fff;
             padding: 2rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        footer {
-            background-color: #2a4365; /* Darker blue color */
-        }
-        .nav-link {
-            transition: color 0.3s, transform 0.3s; /* Smooth color and transform transition */
-        }
-        .nav-link:hover {
-            color: #63b3ed; /* Light blue color on hover */
-            transform: scale(1.1); /* Slightly increase size on hover */
-        }
-        .header-title {
-            font-size: 3rem; /* Larger title size */
         }
         .background-image {
             position: relative;
             background-size: cover;
             background-position: center;
-            z-index: 1;
+            border-radius: 15px;
+            padding: 4rem 2rem;
+            margin-bottom: 2rem;
+            color: white;
+            text-align: center;
+            border: 2px solid #1d4350; /* Added outline */
         }
         .background-image::before {
             content: '';
@@ -60,142 +99,172 @@
             right: 0;
             bottom: 0;
             left: 0;
-            background-image: inherit; /* Use the same background as the parent */
-            opacity: 0.5; /* Semi-transparent overlay */
-            z-index: -1;
-        }
-        /* The .overlay class is not needed unless you want a white overlay on top of your background */
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.4); /* White overlay with transparency */
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
             z-index: 1;
         }
-        .content-on-top {
+        .background-image .content-on-top {
             position: relative;
-            z-index: 2; /* Ensures content is above the pseudo-element */
-        }
-        #quiz-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust minmax values as needed */
-            gap: 20px; /* Space between grid items */
+            z-index: 2;
         }
         .quiz-row {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 questions per row */
-            gap: 20px; /* Space between questions */
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
         }
-
         #quiz-content > div {
-        /* Styles for individual quiz question containers */
-            background: #fff; /* Optional: background color */
-            padding: 15px; /* Optional: padding */
-            border-radius: 10px; /* Optional: border radius */
-            box-shadow: 0 2px 4px rgb(0, 0, 0); /* Optional: box shadow */
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            color: #333;
+            border: 2px solid #1d4350; /* Added outline */
         }
-        #corner-gif {
+        #quiz-content > div:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        #submit-quiz {
+            background-color: #1d4350;
+            font-weight: 600;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            transition: background-color 0.3s, transform 0.3s;
+            cursor: pointer;
+            border: 2px solid #1d4350; /* Added outline */
+        }
+        #submit-quiz:hover {
+            background-color: #a43931;
+            transform: scale(1.05);
+        }
+        footer {
+            background-color: #1d4350;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        .team img {
+            border-radius: 50%;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid #1d4350; /* Added outline */
+        }
+        .team img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .wave {
             position: fixed;
-            right: 10px; /* Adjust as needed */
-            bottom: 10px; /* Adjust as needed */
-            width: 100px; /* Adjust the size as needed */
-            height: auto;
-            z-index: 1000; /* Ensure it's above other content */
+            top: 0;
+            bottom: 0;
+            width: 15%;
+            background: url('https://www.svgrepo.com/show/189216/wave.svg') repeat-y;
+            animation: wave 5s linear infinite;
+            opacity: 0.5;
         }
-
+        .wave-left {
+            left: 0;
+            transform: rotate(180deg);
+        }
+        .wave-right {
+            right: 0;
+        }
+        @keyframes wave {
+            from { background-position-y: 0; }
+            to { background-position-y: 100%; }
+        }
     </style>
 </head>
-<body class="font-sans">
+<body>
+    <div class="wave wave-left"></div>
+    <div class="wave wave-right"></div>
     <!-- Header -->
-    <header class="bg-gray-800 text-white p-4 shadow-md" style="background-image: url(https://i.imgur.com/GHVYcEC.png); background-size: cover; background-position: center;">
-        <h1 class="text-center header-title">Raimund Popper</h1>
-        <img src="https://imgur.com/s7S5cyZ.png" alt="Logo" style="position: absolute; top: 10px; right: 10px; height: 120px;">
+    <header>
+        <h1 class="header-title">Raimund Popper</h1>
         <nav>
-            <ul class="flex justify-center space-x-4 mt-2">
-                <li><a href="#home" class="nav-link text-lg">Home</a></li>
-                <li><a href="#learn" class="nav-link text-lg">Lernen</a></li>
-                <li><a href="#quiz" class="nav-link text-lg">Quiz</a></li>
-                <li><a href="#process" class="nav-link text-lg">Protokoll</a></li>
-                <li><a href="#team" class="nav-link text-lg">Team</a></li>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#learn">Lernen</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+                <li><a href="#process">Pinwand</a></li>
+                <li><a href="#team">Team</a></li>
             </ul>
         </nav>
     </header>
     <!-- Main Content -->
-    <main class="main-content p-4">
+    <main class="main-content">
         <!-- Home Section -->
-        <section id="home" class="my-4 section-content">
+        <section id="home" class="section-content">
             <h2 class="section-heading">Willkommen zu Kritischer Rationalismus nach Raimund Popper</h2>
-            <p class="text-lg">Unsere Gruppe beschloss, für das Philosophie Project eine Website zu erstellen, die einen erklär Video zeigt, aber auch eine interaktive Option bietet, damit Menschen erkennen und verstehen können, wie sie lernen möchten. Den allgemeiner Ziel war es, die verschiedenen Möglichkeiten zu zeigen, wie ein Schüler ein Video oder Material aufnehmen kann, indem er etwas Kreatives erstellt. 
+            <p class="text-lg">Unsere Gruppe beschloss, für das Philosophie Project eine Website zu erstellen, die einen erklär Video zeigt, aber auch eine interaktive Option bietet, damit Menschen erkennen und verstehen können, wie sie lernen möchten.</p>
             <p class="text-lg">Viel Spaß!</p>
         </section>
 
         <!-- Learn Section -->
-        <section id="learn" class="my-4 section-content">
-            <h2 class="section-heading">Lernen mit unserem Video</h2>
+        <section id="learn" class="section-content">
+            <h2 class="section-heading">Lernen mit einem Video</h2>
             <div class="video-responsive">
-                <!-- Replace 'YourVideoID' with the actual ID of your YouTube video -->
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/pFoGaDjO-E0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/x0-yRHJmOkM?si=0DDwb1rOz17qx82y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <!-- Additional content for learning sections can go here -->
         </section>
 
         <!-- Quiz Section -->
-        <section id="quiz" class="my-4 section-content background-image" style="background-image: url(https://static.vecteezy.com/system/resources/thumbnails/008/214/810/small/quiz-set-in-doodle-style-illustration-icon-question-symbol-for-print-and-design-quiz-and-exam-concept-isolated-element-on-a-white-background-collection-of-sign-for-school-and-event-vector.jpg);">
-            <div class="overlay"></div>
+        <section id="quiz" class="section-content background-image" style="background-image: url('https://static.vecteezy.com/system/resources/thumbnails/008/214/810/small/quiz-set-in-doodle-style-illustration-icon-question-symbol-for-print-and-design-quiz-and-exam-concept-isolated-element-on-a-white-background-collection-of-sign-for-school-and-event-vector.jpg');">
             <div class="content-on-top">
-                <h2 class="section-heading">Quiz</h2>
-                <div id="quiz-content" class="flex flex-wrap justify-center">
+                <h2 class="section-heading" style="color: white;">Quiz</h2>
+                <div id="quiz-content" class="quiz-row">
                     <!-- Quiz questions will be loaded here by JavaScript -->
                 </div>
-                <button id="submit-quiz" class="bg-blue-500 text-white p-2 rounded mt-4 hover:bg-blue-600">Submit Quiz</button>
+                <button id="submit-quiz">Submit Quiz</button>
                 <div id="quiz-result" class="mt-4"></div>
             </div>
         </section>
 
-         <!-- Our Process Section -->
-         <section id="process" class="my-4 section-content background-image" style="background-image: url(https://e1.pxfuel.com/desktop-wallpaper/655/684/desktop-wallpaper-dark-green-plain-green.jpg);">
-            <div class="overlay"></div>
+        <!-- Our Process Section -->
+        <section id="process" class="section-content background-image" style="background-image: url('https://e1.pxfuel.com/desktop-wallpaper/655/684/desktop-wallpaper-dark-green-plain-green.jpg');">
             <div class="content-on-top">
-                <h2 class="section-heading">Protokollierung</h2>
-                <p class="text-lg">Das ist der Programm der wir benutzt haben</p>
-                <img src="https://i.imgur.com/enhwMln.png" alt="Description of Image" class="max-w-full h-auto rounded">
+                <h2 class="section-heading" style="color: white;">Pinwand</h2>
+                <p class="text-lg">Das ist unsere Pinwand</p>
+                <div class="video-responsive" style="padding-top: 0; height: 500px;">
+                    <iframe src="https://www.taskcards.de/#/board/70c73302-70d1-4ed8-b91a-a7b97d515a01/view?token=eeb5e230-e145-4448-b87a-99e8d8543680" frameborder="0" style="width: 100%; height: 100%;" allowfullscreen></iframe>
+                </div>
             </div>
-         </section>
+        </section>
 
-         <!-- Team -->
-         <section id="team" class="my-4 section-content">
+        <!-- Team Section -->
+        <section id="team" class="section-content">
             <h2 class="section-heading">Unser Team</h2>
-            <div class="flex flex-wrap justify-center">
+            <div class="flex flex-wrap justify-center team">
                 <!-- Team Member 1 -->
-                <div class="p-4">
-                    <img src="https://i.imgur.com/B7o2MNK.jpg" alt="Team Member 1" class="rounded-full h-32 w-32 object-cover">
+                <div class="p-4 text-center">
+                    <img src="https://i.imgur.com/B7o2MNK.jpg" alt="Team Member 1" class="h-32 w-32 object-cover mx-auto">
                     <h3 class="text-lg mt-2">Carlos Caxias</h3>
                     <p>- Erstellung der Website</p>
-                    <p>- Video Editing</p>
+                    <p>- Pinwand ersteller</p>
                 </div>
                 <!-- Team Member 2 -->
-                <div class="p-4">
-                    <img src="https://i.imgur.com/jMeiCJJ.jpeg" alt="Team Member 2" class="rounded-full h-32 w-32 object-cover">
-                    <h3 class="text-lg mt-2">Miguel Gomes 👑</h3>
+                <div class="p-4 text-center">
+                    <img src="https://cdn.discordapp.com/avatars/393412887999283210/762898bdc81047bfc69ee6bee5121f7c.webp?size=128" alt="Team Member 2" class="h-32 w-32 object-cover mx-auto">
+                    <h3 class="text-lg mt-2">Salvador Coutinho 👑</h3>
                     <p>- Leiter</p>
-                    <p>- Präsentator</p>
+                    <p>- Pinwand ersteller</p>
                 </div>
                 <!-- Team Member 3 -->
-                <div class="p-4">
-                    <img src="https://i.imgur.com/pR6AWe0.jpeg" alt="Team Member 3" class="rounded-full h-32 w-32 object-cover">
-                    <h3 class="text-lg mt-2">Francesco Sousa</h3>
-                    <p>- Script zuständig</p>
-                    <p>- Video Beurteilung</p>
+                <div class="p-4 text-center">
+                    <img src="https://imgur.com/MUKAcaO.jpg" alt="Team Member 3" class="h-32 w-32 object-cover mx-auto">
+                    <h3 class="text-lg mt-2">Miguel Vitorino</h3>
+                    <p>- Pinwand ersteller</p>
+                    <p>- Video Wahl</p>
                 </div>
             </div>
-        </section>        
+        </section>
     </main>
 
     <!-- Footer -->
-    <footer class="text-white p-4 text-center">
-        <p class="text-lg">&copy; 2024 Deeper Learning 11c</p>
+    <footer>
+        <p class="text-lg">&copy; 2023/24 Philosophie NL</p>
     </footer>
 
     <!-- JavaScript for Quiz -->
@@ -208,23 +277,23 @@
                     correctAnswer: 1
                 },
                 {
-                    question: "Welches Buch schrieb Karl Popper über die Theorie der Wissenschaft?",
-                    answers: ["Zywoo", "Olaf", "Logik der Forschung", "Drang"],
+                    question: "Wann und wo wurde Karl Raimund Popper geboren?",
+                    answers: ["3. Oktober 1925 in Prag, Tschechoslowakei", "15. April 1890 in Zürich, Schweiz", "28. Juli 1902 in Wien, Österreich", "1. Januar 1910 in Berlin, Deutschland"],
                     correctAnswer: 2
                 },
                 {
-                    question: "Was versteht Popper unter dem Begriff Offene Gesellschaft?"
-                    answers: ["Eine Gesellschaft, die Kritik und Diskussion fördet", "Eine Gesellschaft ohne Gesetze", "Als weiser König", "Als zurückhaltender Führer"],
+                    question: "Was versteht Popper unter dem Begriff Offene Gesellschaft?",
+                    answers: ["Eine Gesellschaft, die Kritik und Diskussion fördert", "Eine Gesellschaft ohne Gesetze", "Als weiser König", "Als zurückhaltender Führer"],
                     correctAnswer: 0
                 },
                 {
-                    question: "Was symbolisiert die Kunst des Drangvolks laut der Aussage einer Bürgerin?",
-                    answers: ["Gefühle und Emotionen", "Tradition und Geschichte", "Wissenschaft und Technologie", "Natur und Umwelt"],
+                    question: "Was betont der Fallibilismus im kritischen Rationalismus?",
+                    answers: ["Die vorläufige Natur wissenschaftlichen Wissens", "Die Unfehlbarkeit wissenschaftlicher Theorien", "Die Unveränderlichkeit wissenschaftlicher Gesetze", "Die Bestätigung aller wissenschaftlichen Hypothesen"],
                     correctAnswer: 0
                 },
                 {
-                    question: "Zu welcher Erkenntnis gelangen König Sturm und die Vernunft am Ende",
-                    answers: ["Dass Vernunft wichtiger ist als Emotion", "Dass Emotionen vermieden werden sollten", "Dass Vernunft allein ausreicht", "Dass Emotion und Vernunft sich ergänzen"],
+                    question: "Welches Beispiel illustriert Poppers Konzept der Falsifizierbarkeit?",
+                    answers: ["Newtons Gravitationstheorie", "Klimaforschung", "Darwins Evolutionstheorie", "Die allgemeine Relativitätstheorie Einsteins"],
                     correctAnswer: 3
                 },
             ];
@@ -235,7 +304,7 @@
             function loadQuiz() {
                 quizQuestions.forEach((q, index) => {
                     const questionContainer = document.createElement('div');
-                    questionContainer.classList.add('p-4'); // Padding for each question
+                    questionContainer.classList.add('p-4');
 
                     const questionElement = document.createElement('div');
                     questionElement.innerHTML = `<h3>${q.question}</h3>`;
@@ -250,7 +319,6 @@
                     quizContent.appendChild(questionContainer);
                 });
             }
-
 
             function calculateScore() {
                 let score = 0;
